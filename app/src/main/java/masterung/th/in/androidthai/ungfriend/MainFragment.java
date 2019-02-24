@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
                             {
                                 Toast.makeText(getActivity(),"Welcome "+jsonObject.getString("Name"),Toast.LENGTH_SHORT).show();
                             }else {
-                                myAlert.normalDialog("Password","Password False");
+                                myAlert.normalDialog("Password","Password False ");
                             }
                         }
 
