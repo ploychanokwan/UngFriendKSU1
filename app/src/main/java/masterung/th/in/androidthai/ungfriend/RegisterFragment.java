@@ -159,6 +159,17 @@ public class RegisterFragment extends Fragment {
                ftpClient.login("ksu@androidthai.in.th","Abc12345");
                ftpClient.changeDirectory("ploycha");
                ftpClient.upload(file,new uploadListener());
+
+               AddUserThread addUserThread = new AddUserThread(getActivity());
+               addUserThread.execute(name,user,password,"http://androidthai.in.th/ksu/ploycha"+nameImage);
+               String result = addUserThread.get();
+               if(Boolean.parseBoolean(result))
+               {
+                   getActivity() .getSupportFragmentManager().popBackStack();
+
+
+               }
+
            }catch (Exception e){
                e.printStackTrace();
                try {
@@ -186,21 +197,25 @@ public class RegisterFragment extends Fragment {
 
         @Override
         public void transferred(int i) {
+            Toast.makeText(getActivity(),"transferred Uploade",Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void completed() {
+            Toast.makeText(getActivity(),"completed Uploade",Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void aborted() {
+            Toast.makeText(getActivity(),"aborted Uploade",Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void failed() {
+            Toast.makeText(getActivity(),"failed Uploade",Toast.LENGTH_SHORT).show();
 
         }
     }
